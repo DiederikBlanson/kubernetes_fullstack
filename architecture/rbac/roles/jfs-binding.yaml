@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: junior-fs-devs
+  namespace: development
+subjects:
+- kind: User
+  name: diederik
+  apiGroup: rbac.authorization.k8s.io 
+- kind: User
+  name: eva
+  apiGroup: rbac.authorization.k8s.io 
+roleRef:
+  kind: Role 
+  name: junior-fs-dev-role
+  apiGroup: rbac.authorization.k8s.io

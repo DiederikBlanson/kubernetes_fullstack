@@ -1,0 +1,41 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: backends
+  namespace: development
+subjects:
+- kind: User
+  name: john 
+  apiGroup: rbac.authorization.k8s.io 
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: backends
+  namespace: staging
+subjects:
+- kind: User
+  name: john 
+  apiGroup: rbac.authorization.k8s.io 
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io
+--- 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: backends
+  namespace: production
+subjects:
+- kind: User
+  name: john 
+  apiGroup: rbac.authorization.k8s.io 
+roleRef:
+  kind: ClusterRole
+  name: backend-role
+  apiGroup: rbac.authorization.k8s.io

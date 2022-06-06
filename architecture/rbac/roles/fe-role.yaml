@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: frontend-role
+rules:
+- apiGroups: [""] 
+  resourceNames: ["frontend"]
+  resources: ["pods","services","deployments","jobs"] 
+  verbs: ["get", "watch", "list"]

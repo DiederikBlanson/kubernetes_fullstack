@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name:  data-analysts
+  namespace: production
+subjects:
+- kind: User
+  name: nuo 
+  apiGroup: rbac.authorization.k8s.io 
+roleRef:
+  kind: Role
+  name: data-analyst-role
+  apiGroup: rbac.authorization.k8s.io

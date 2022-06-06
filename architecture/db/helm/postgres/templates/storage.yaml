@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "postgres.fullname" . }}-pv-volume
+  labels:
+    {{- include "postgres.labels" . | nindent 4 }}
+    app: {{ include "postgres.fullname" . }}
+spec:
+  storageClassName: {{ .Values.storage.classname }}
+  capacity: 
+    storage: {{ .Values.storage.size }} 
+  accessModes: 
+    - ReadWriteOnce 
+  hostPath: 
+    path: {{ .Values.volumemount.path }}
+  persistentVolumeReclaimPolicy: Retain
+
+kind: PersistentVolumeClaim 
+apiVersion: v1 
+metadata: 
+  name: {{ include "postgres.fullname" . }}-pv-claim 
+  labels: 
+    app: {{ include "postgres.fullname" . }} 
+spec: 
+  storageClassName: {{ .Values.storage.classname }} 
+  accessModes: 
+    - ReadWriteOnce
+  resources: 
+    requests: 
+      storage: {{ .Values.storage.size }} 

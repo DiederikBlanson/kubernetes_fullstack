@@ -1,0 +1,11 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: api-config 
+  labels: 
+    app: api 
+data: 
+  SQLALCHEMY_DATABASE_URI: postgresql://postgresadmin:admin123@postgres-service:5432/postgres
+  SQLALCHEMY_TRACK_MODIFICATIONS: 'false'
+  FRONTEND_URL: 'https://localhost:32001'
+

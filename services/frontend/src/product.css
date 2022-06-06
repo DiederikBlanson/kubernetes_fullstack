@@ -1,0 +1,150 @@
+#page_product {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.product-information {
+    display: grid;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+@media screen and (min-width: 600px){
+    .product-information {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-information .right .inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        -webkit-transform: translate(-50%, -50%);  
+        transform: translate(-50%, -50%);  
+    }
+}
+
+.product-information .left {
+    padding-bottom: 100%;
+    background-size: auto 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.product-information .right {
+    position: relative;
+}
+
+.product-information .title {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.product-information .price {
+    font-size: 17px;
+    opacity: 0.6;
+    margin-top: 5px;
+}
+
+.product-information .star {
+    height: 25px;
+    margin: 10px 0;
+}
+
+.product-information .description {
+    line-height: 22px;
+    font-size: 18px;
+}
+
+/* ------------------------         
+------- ADD REVIEW --------
+--------------------------- */
+
+.product-review-add *:not(.button){
+    margin-bottom: 10px;
+}
+
+.product-review-add {
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.product-review-add input, textarea {
+    display: block;
+}
+
+.product-review-add input, .product-review-add textarea, .product-review-add select {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.product-review-add input, .product-review-add textarea {
+    width: 100%;
+    max-width: 350px;
+}
+
+/* ------------------------         
+------- ALL REVIEWS -------
+--------------------------- */
+
+.product-reviews {
+    margin: 50px 0 !important;
+}
+
+.product-reviews h1, .review {
+    margin-bottom: 15px;
+}
+
+.review {
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.review .profile-picture {
+    height: 40px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 100px;
+    width: 40px;
+    display: inline-block;
+}
+
+.button.add {
+    background: green;
+}
+
+.button.delete {
+    position: absolute;
+    background: red;
+    top: 20px;
+    right: 20px;
+}
+
+.review .user {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.review .date {
+    opacity: 0.6;
+}
+
+.review .summary {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.review .description {
+    margin-top: 10px;
+    color: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.config.name }}
+  labels:
+    app: frontend
+data:
+  web.properties: | 
+    {{- range $key, $value := .Values.env }}
+      window.{{ $key }} = "{{ $value }}"; 
+    {{- end }}
