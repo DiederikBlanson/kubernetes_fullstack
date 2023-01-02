@@ -1,6 +1,5 @@
 version: "3.8"
 services:
-
   frontend:
     container_name: react-container-dev
     image: dedder98/kubernetes-react-dev
@@ -16,3 +15,39 @@ services:
       - WDS_SOCKET_PORT=32001
     ports:
       - 32001:3000
+    depends_on: 
+      - backend
+    networks:
+      - my_net
+  
+  backend:
+    container_name: node-container
+    image: dedder98/kubernetes-nodejs-dev
+    depends_on:
+      - db
+    build: ./backend/app
+    environment:
+      - FRONTEND_URL=http://localhost:32001
+    ports:
+    - 32002:80
+    networks:
+      - my_net
+
+  db:
+    container_name: db-container
+    image: dedder98/kubernetes-db-dev
+    build: ./db
+    hostname: postgres
+    environment:
+      POSTGRES_DB: kube-full-db
+      POSTGRES_USER: postgresadmin
+      POSTGRES_PASSWORD: admin123
+    ports:
+    - 32003:5432
+    restart: always
+    networks:
+      - my_net
+
+networks:
+  my_net:
+    name: my_shared_db
