@@ -6,7 +6,10 @@ This guide will walk you through the process of creating a React-application wit
 3. (Optional) Create a Helm chart
 
 ## Create React-App
-1. Use the `create-react-app` command to create the React app with TypeScript: `npx create-react-app my-app --template typescript`
+1. Use the `create-react-app` command to create the React app with TypeScript: 
+```bash
+npx create-react-app my-app --template typescript
+```
 2. Delete `package-lock.json` and `node_modules`, then run `yarn install` to use yarn as the package manager, which creates a `yarn.lock` file.
 3. Create a `config.js` file in the `/public` folder to store environment variables. We will use `window[key]` instead of `process.env[key]` to correctly inject the env variables into the Kubernetes environment.
 4. Add `<script src="%PUBLIC_URL%/config.js"></script>` to `public/index.html`.
@@ -21,15 +24,20 @@ declare global {
 }
 ```
 
-
 ## Dockerize React App
 1. The `.dockerignore` file has the contents `/node_modules`. As such, `node_modules` will be ignored during the dockerization process.
 2. The `Dockerfile` file consists of the image. As you can see in the `/system/frontend/app` folder, there are two Dockerfiles for both the development and production environments.
 
 ## Create Helm Chart
 Normally, you don't want to create an individual Helm chart as `system/helm-run.sh` should spin up the whole environment. However, it is still possible to do so by performing the following steps:
-1. Install a new chart: `microk8s helm3 install [name-chart] ./helm-chart`
-2. Uninstall: `microk8s helm3 uninstall [name-chart]`
+1. Install a new chart 
+```bash
+microk8s helm3 install [name-chart] ./helm-chart
+```
+2. Uninstall the chart
+```bash
+microk8s helm3 uninstall [name-chart]
+```
 
 ---
 
