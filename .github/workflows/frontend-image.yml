@@ -1,0 +1,30 @@
+name: Frontend Image CI
+
+on:
+  push:
+    branches: ["main"]
+    paths: ['frontend/app/**']
+  pull_request:
+    branches: ["main"]
+    paths: ['frontend/app/**']
+
+env:
+  DOCKER_USER: ${{secrets.DOCKER_USER}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  DOCKER_FRONTEND_IMAGE: kubernetes-react
+
+jobs:
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/app
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker Image for React-App
+      run: docker build . --file Dockerfile.prod --tag $DOCKER_USER/$DOCKER_FRONTEND_IMAGE:latest
+    - name: Docker login
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Push image
+      run: docker push $DOCKER_USER/$DOCKER_FRONTEND_IMAGE:latest
