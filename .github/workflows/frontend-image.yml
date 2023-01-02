@@ -3,10 +3,10 @@ name: Frontend Image CI
 on:
   push:
     branches: ["main"]
-    paths: ['frontend/app/**']
+    paths: ['system/frontend/app/**']
   pull_request:
     branches: ["main"]
-    paths: ['frontend/app/**']
+    paths: ['system/frontend/app/**']
 
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: frontend/app
+        working-directory: system/frontend/app
     steps:
     - uses: actions/checkout@v3
     - name: Docker Image for React-App

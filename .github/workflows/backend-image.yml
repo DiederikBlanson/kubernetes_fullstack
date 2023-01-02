@@ -3,10 +3,10 @@ name: Docker Image CI
 on:
   push:
     branches: ["main"]
-    paths: ['backend/app/**']
+    paths: ['system/backend/app/**']
   pull_request:
     branches: ["main"]
-    paths: ['backend/app/**']
+    paths: ['system/backend/app/**']
 
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: backend/app
+        working-directory: system/backend/app
     steps:
     - uses: actions/checkout@v3
     - name: Docker Image for NodeJS-App

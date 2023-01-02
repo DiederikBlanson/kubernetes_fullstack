@@ -19,7 +19,11 @@ groups
 microk8s start
 microk8s status --wait-ready
 
-# add to ~/.bash_aliases -> alias kubectl='microk8s kubectl'
+# create ~/.bash_aliases file and append shortcuts
+touch ~/.bash_aliases
+echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
+echo "alias helm3='microk8s helm3'" >> ~/.bash_aliases
+source ~/.bash_aliases
 
 # add microk8s modules
 microk8s enable dns storage

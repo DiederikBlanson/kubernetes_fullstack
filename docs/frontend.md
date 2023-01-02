@@ -69,20 +69,19 @@ In order to give kubernetes access to a private Docker registry, we have to gene
 1. Generate a secret on the command line: ```kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>```
 2. Generate a ```secret.yml``` file in the helm folder and put the contents of ```kubectl get secret regcred --output=yaml``` in there.
 3. Delete the secret from the Kubernetes environment as you only want the definition in the file.
-4. Add the following defintion in the Pod/Deployment:
+4. Add the following defintion in values.yml:
 ```
-spec:
-  containers:
-  - name: private-reg-container
-    image: <your-private-image>
-  imagePullSecrets:
-  - name: regcred
+# deployment
+...
+container:
+  image: <your-private-image>
+...
 ```
 
 # Create Kubernetes Helm chart
+Normally, you don't want to create an individual helm chart as ```system/helm-run.sh``` should spin up the whole environment. However, it is still possible by performing the following steps:
 1. Install a new chart: ```microk8s helm3 install [name-chart] ./helm-chart```
 2. Uninstall: ```microk8s helm3 uninstall [name-chart]```
 
 # Create new version kubernetes
 1. If deployment is already created, you can make a new rollout: ```kubectl rollout restart deployment/[deployment]```
-2. Check IP of nodeport: ```kubectl get svc```
