@@ -38,10 +38,12 @@ These credentials are necessary to push changes in the images to DockerHub with 
 <br/>
 
 ## How to get started?
-The application is ready to run now that the environment is setup. The following documentation is available (most is work in progress):
+Great! Now that the environment is set up, the application is ready to be run. Here is a list of available documentation (some of which may still be a work in progress):
 - ```docs/local-setup.sh```: run the application locally with Docker-Compose. Here, no Kubernetes is involved.
 - ```docs/kubernetes-setup.sh```: run the application in a Kubernetes cluster
 - ```docs/multiple-nodes.sh```: when the Kubernetes cluster is succesfully created, new nodes can be added.
 - ```docs/frontend.sh```: explains how the frontend works
 - ```docs/backend.sh```: explains how the backend works
 - ```docs/database.sh```: explains how the database works
+
+If you have any questions or encounter any issues while running the application, feel free to refer to these resources or reach out for additional support.
