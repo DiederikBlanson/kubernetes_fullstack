@@ -22,7 +22,7 @@ spec:
         image: {{ .Values.container.image }}
         env:
         - name: FRONTEND_URL
-          value: "Hello from the environment"
+          value: {{ .Values.env.FRONTEND_URL }}
         ports:
         - containerPort: {{ .Values.container.port }}
         # nodeSelector:

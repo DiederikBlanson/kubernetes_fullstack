@@ -13,6 +13,10 @@ container:
   image: dedder98/kubernetes-nodejs
   port: 80
 
+# env
+env:
+  FRONTEND_URL: http://kube-full.com
+
 # ingress
 ingress:
-  url: my-inventory.com
+  url: api.kube-full.com

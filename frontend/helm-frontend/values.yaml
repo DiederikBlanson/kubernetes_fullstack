@@ -15,4 +15,8 @@ container:
 
 # environment variables
 env:
-  REACT_APP_BACKEND_URL: http://my-inventory.com
+  REACT_APP_BACKEND_URL: http://api.kube-full.com
+
+# ingress
+ingress:
+  url: kube-full.com
