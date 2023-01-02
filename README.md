@@ -7,8 +7,8 @@ The aim of this repository is to show a practical example of how a fullstack app
 ## Components
 1. 'kube-full' a.k.a. the 'system': this name refers to the fullstack application consisting of the frontend, backend and database.
 2. Kubernetes: kube-full is deployed on a local Kubernetes cluster which consists of one or more nodes.
-3. Docker: the images of the containers of kube-full are stored in the Docker hub which is a cloud repository.
-4. Github Actions: on specific push/pull Github requests, certain actions are executed. For now, if there is a change in the frontend or backend application, a new Docker image will be created and pushed to the registry. 
+3. Docker: the images of the containers of kube-full are stored in the DockerHub, which is a cloud repository.
+4. GitHub Actions: on specific push/pull GitHub requests, certain actions are executed. For now, if there is a change in the frontend or backend application, a new Docker image will be created and pushed to the registry. 
 
 <br/>
 
@@ -28,13 +28,13 @@ The installation guide is suitable for Ubuntu 20.04 LTS. I am testing the system
 1. Install Ubuntu
 2. Optionally: enable SSH in order to easily access the server (see the file ```scripts/enable-ssh.sh```).
 3. Install Kubernetes/Docker. The exact steps are written down in the file ```scripts/kubernetes-docker-install.sh```.
-4. Create credentials to connect with Docker Hub: (TODO)
+4. Create credentials to connect with DockerHub: (TODO)
 
-### Create a Docker Hub account
-A Docker Hub account is necessary to push the images to the cloud repository (https://hub.docker.com/signup). Be sure to update the values 'dedder98' in the repository as this is my personal Docker Hub account (which can be found in the ```docker-compose``` and ```values.yaml``` files). 
+### Create a DockerHub-account
+A DockerHub-account is necessary to push the images to the cloud repository (https://hub.docker.com/signup). Be sure to update the values 'dedder98' in the repository as this is my personal DockerHub-account (which can be found in the ```docker-compose``` and ```values.yaml``` files). 
 
-### Add Docker Hub secrets to Github Actions
-These credentials are necessary to push changes in the images to Docker Hub with help of the Github Actions.
+### Add DockerHub secrets to GitHub Actions
+These credentials are necessary to push changes in the images to DockerHub with help of the GitHub Actions.
 
 <br/>
 
