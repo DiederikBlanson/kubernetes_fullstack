@@ -5,7 +5,7 @@ deploy this code on a kubernetes cluster. The steps are the following:
 2. Create a Docker container
 3. Publish to Kubernetes
 
-# Create a React-app
+# Create React-app
 sources:
 - https://create-react-app.dev/docs/adding-typescript/
 
@@ -60,23 +60,6 @@ services:
 ```
 4. Build the container: ```docker-compose build```
 6. Push live to docker registry: ```docker push [username]/[image-name]```. Be sure to login
-
-# Add private registry to kubernetes
-sources:
-- https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-
-In order to give kubernetes access to a private Docker registry, we have to generate a secret.
-1. Generate a secret on the command line: ```kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>```
-2. Generate a ```secret.yml``` file in the helm folder and put the contents of ```kubectl get secret regcred --output=yaml``` in there.
-3. Delete the secret from the Kubernetes environment as you only want the definition in the file.
-4. Add the following defintion in values.yml:
-```
-# deployment
-...
-container:
-  image: <your-private-image>
-...
-```
 
 # Create Kubernetes Helm chart
 Normally, you don't want to create an individual helm chart as ```system/helm-run.sh``` should spin up the whole environment. However, it is still possible by performing the following steps:

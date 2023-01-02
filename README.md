@@ -33,10 +33,16 @@ The installation guide is suitable for Ubuntu 20.04 LTS. I am testing the system
 ### Create a Docker Hub account
 A Docker Hub account is necessary to push the images to the cloud repository (https://hub.docker.com/signup). Be sure to update the values 'dedder98' in the repository as this is my personal Docker Hub account (which can be found in the ```docker-compose``` and ```values.yaml``` files). 
 
+### Add Docker Hub secrets to Github Actions
+These credentials are necessary to push changes in the images to Docker Hub with help of the Github Actions.
+
 <br/>
 
-### Commands dev
-```docker-compose -f docker-compose-dev.yml build```
-
-### Commands prod
-```docker-compose -f docker-compose-prod.yml build```
+## How to get started?
+The application is ready to run now that the environment is setup. The following documentation is available (most is work in progress):
+- ```docs/local-setup.sh```: run the application locally with Docker-Compose. Here, no Kubernetes is involved.
+- ```docs/kubernetes-setup.sh```: run the application in a Kubernetes cluster
+- ```docs/multiple-nodes.sh```: when the Kubernetes cluster is succesfully created, new nodes can be added.
+- ```docs/frontend.sh```: explains how the frontend works
+- ```docs/backend.sh```: explains how the backend works
+- ```docs/database.sh```: explains how the database works
