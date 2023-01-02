@@ -1,1 +1,2 @@
-helm-run.sh
+*/**/node_modules
+*/**/secret.yml
