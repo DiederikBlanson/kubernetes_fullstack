@@ -1,0 +1,12 @@
+FROM node:19-alpine
+
+# set working directory
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
+
+# install and cache app dependencies
+RUN yarn install
+
+# start app
+CMD ["yarn", "start"]

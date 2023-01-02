@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app }}-deployment 
+  labels:
+    app: {{ .Values.app }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+    spec:
+      imagePullSecrets:
+      - name: {{ .Values.app }}-regcred
+      containers:
+      - name: {{ .Values.app }}-container
+        imagePullPolicy: Always
+        image: {{ .Values.container.image }}
+        # nodeSelector:
+        #   kubernetes.io/hostname: dell
+        volumeMounts:
+          - name: config
+            mountPath: "/usr/share/nginx/html/config.js"
+            subPath: "config.js"
+        ports:
+        - containerPort: {{ .Values.container.port }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Values.app }}-config
+            items:
+              - key: "web.properties"
+                path: "config.js"

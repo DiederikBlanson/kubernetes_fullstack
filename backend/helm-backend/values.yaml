@@ -1,0 +1,18 @@
+app: "backend-app"
+
+# service
+service:
+  type: LoadBalancer
+  protocol: TCP
+  port: 4000
+  nodePort: 32002 # optional for nodeport, service can be accessed by localhost:32001
+
+# deployment
+replicaCount: 4
+container:
+  image: dedder98/kubernetes-nodejs
+  port: 80
+
+# ingress
+ingress:
+  url: my-inventory.com

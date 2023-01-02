@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+
+  frontend:
+    container_name: react-container-dev
+    image: dedder98/kubernetes-react-dev
+    build: 
+      context: ./frontend/app
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend/app:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true 
+      - FAST_REFRESH=true
+      - WDS_SOCKET_PORT=32001
+    ports:
+      - 32001:3000
