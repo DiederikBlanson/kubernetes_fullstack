@@ -1,3 +1,5 @@
+# sources: https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
+
 # get token to access the Kubernetes dashboard
 token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d " " -f1)
 microk8s kubectl -n kube-system describe secret $token

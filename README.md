@@ -1,37 +1,36 @@
 # Fullstack application in Kubernetes
 
-The aim of this repository is to show a practical example of how a fullstack application (frontend, backend and database) can be deployed on a local Kubernetes cluster. Setting up the whole environment can be quite tedious, hence the documentation is continuously improved. Note: using this code (in production) is on your own risk, and you should be very critical on each component in the system. Do not hesitate to contact me if you have questions, or recommendations on how to improve the current setup.
-
+This repository aims to demonstrate how to deploy a full-stack application, including the frontend, backend, and database, on a local Kubernetes cluster. The process of setting up the environment can be complex, so the documentation is regularly updated to make it easier to follow. However, it is important to note that using this code in a production setting is done at your own risk, and you should thoroughly evaluate each component of the system before using it. If you have any questions or suggestions for improving the current setup, please don't hesitate to contact me.
 <br/>
 
 ## Components
-1. 'kube-full' a.k.a. the 'system': this name refers to the fullstack application consisting of the frontend, backend and database.
-2. Kubernetes: kube-full is deployed on a local Kubernetes cluster which consists of one or more nodes.
-3. Docker: the images of the containers of kube-full are stored in the DockerHub, which is a cloud repository.
-4. GitHub Actions: on specific push/pull GitHub requests, certain actions are executed. For now, if there is a change in the frontend or backend application, a new Docker image will be created and pushed to the registry. 
+"kube-full," also known as the "system," refers to a fullstack application that includes a frontend, backend, and database. It is deployed on a local Kubernetes cluster, which consists of one or more nodes. The container images for kube-full are stored in DockerHub, a cloud repository. When certain push/pull requests are made on GitHub, certain actions are triggered. Currently, if there are any changes to the frontend or backend application, a new Docker image will be created and added to the registry.
 
 <br/>
 
 ## High-level 'kube-full' architecture
-The technologies used in the fullstack application:
-1. Front-end: A React-application written in TypeScript. The default template of ```create-react-app``` is used which displays a single page. Here, we can check the connection with the server and if it returns a response.
-2. Back-end: A NodeJS-application written in TypeScript, using Express. This API consists of a single endpoint to return a dummy response to the frontend.
-3. Database: A PostgreSQL database with a single table. Although the Docker-container already exists, there is not yet a connection with the backend (TODO).
+The fullstack application uses the following technologies:
+1. Front-end: A React application written in TypeScript, using the default template of create-react-app which displays a single page. This allows the connection with the server to be tested, and verifies that the server returns a response.
+2. Back-end: A NodeJS application written in TypeScript, using Express. This API consists of a single endpoint which returns a dummy response to the frontend.
+3. Database: A PostgreSQL database with a single table. Although there is a Docker container for the database, it is not yet connected to the backend (TODO).
 
 <br/>
 
 ## Prerequisites 
-Understanding the full picture might take some time, hence it is important to see what components exist and how they are interconnected. Although you might end up only using specific parts of the repository, I would like to still give the opportunity to set it up completeley. These are the first steps of getting started:
+It is important to have a comprehensive understanding of the full system in order to effectively use and modify the different components. The following are the initial steps to get started:
+1. Familiarize yourself with the various components of the system and how they are interconnected.
+2. Determine which specific parts of the repository you will be using.
+3. Follow the setup instructions to get the complete system up and running. This may involve installing dependencies, connecting to a database, and configuring any necessary settings.
 
 ### Install Kubernetes/Docker
-The installation guide is suitable for Ubuntu 20.04 LTS. I am testing the system locally in a Virtual Machine but run the production code on 3 physical Ubuntu servers. These are the steps to follow:
-1. Install Ubuntu
-2. Optionally: enable SSH in order to easily access the server (see the file ```scripts/enable-ssh.sh```).
-3. Install Kubernetes/Docker. The exact steps are written down in the file ```scripts/kubernetes-docker-install.sh```.
-4. Create credentials to connect with DockerHub: (TODO)
+To set up the system on Ubuntu 20.04 LTS, follow these steps:
+1. Install Ubuntu on your local virtual machine or production servers.
+2. (Optional) Enable SSH to allow for easy access to the server. Refer to the file scripts/enable-ssh.sh for instructions.
+3. Install Kubernetes and Docker by following the steps outlined in the file scripts/kubernetes-docker-install.sh.
+4. Create credentials to connect to DockerHub. (TODO)
 
 ### Create a DockerHub-account
-A DockerHub-account is necessary to push the images to the cloud repository (https://hub.docker.com/signup). Be sure to update the values 'dedder98' in the repository as this is my personal DockerHub-account (which can be found in the ```docker-compose``` and ```values.yaml``` files). 
+In order to push the container images to the cloud repository on DockerHub, you will need to create a DockerHub account (https://hub.docker.com/signup). After creating your account, be sure to update the values in the ```docker-compose``` and ```values.yaml``` files to reflect your DockerHub username. Currently, the values are set to "dedder98," which is the username for my personal DockerHub account.
 
 ### Add DockerHub secrets to GitHub Actions
 These credentials are necessary to push changes in the images to DockerHub with help of the GitHub Actions.
