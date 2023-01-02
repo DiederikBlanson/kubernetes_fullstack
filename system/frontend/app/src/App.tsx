@@ -5,23 +5,30 @@ import axios from 'axios'
 class App extends React.Component {
 
 	state = {
-		message: "Waiting...."
+		loading: true,
+		list: []
 	}
 
 	componentDidMount() {
-		console.log(`Backend url: ${window.REACT_APP_BACKEND_URL}`)
-		axios.get(window.REACT_APP_BACKEND_URL).then(res => {
+		axios.get(`${window.REACT_APP_BACKEND_URL}/products`).then((res: any) => {
 			this.setState({
-				message: res.data.message
+				loading: false,
+				list: res.data.result
 			})
 		})
 	}
 
 	render(){
+		if (this.state.loading) return <div> waiting on server... </div>
+
 		return (
 			<div className="App">
 				<header className="App-header">
-					<p> My message: { this.state.message } </p>
+					{
+						this.state.list.map((l: any) =>
+							<p> Name: {l.name} </p>
+						)
+					}
 				</header>
 			</div>
 		)
