@@ -1,7 +1,5 @@
 # Adding Multiple Nodes to a Kubernetes Cluster
-Source: 
-- https://ubuntu.com/tutorials/getting-started-with-kubernetes-ha#4-create-a-microk8s-multinode-cluster
-
+...
 ### Prerequisites
 - The new node should have `microk8s` installed.
 
@@ -36,3 +34,7 @@ sudo echo "[node-ip] [node-name"] << /etc/hosts
 ```bash
 kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
 ```
+
+----
+sources: 
+- https://ubuntu.com/tutorials/getting-started-with-kubernetes-ha#4-create-a-microk8s-multinode-cluster
