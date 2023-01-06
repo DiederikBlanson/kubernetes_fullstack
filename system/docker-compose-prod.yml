@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+
   frontend:
     container_name: react-container
     image: dedder98/kubernetes-react
