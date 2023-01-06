@@ -18,8 +18,8 @@ env:
   FRONTEND_URL: http://kube-full.com
   POSTGRES_USER: postgresadmin
   POSTGRES_HOST: postgres
-  POSTGRES_DB: kube-full-db
-  POSTGRES_PASSWORD: admin123
+  POSTGRES_DB: postgresdb
+  POSTGRES_PASSWORD: psltest
   POSTGRES_PORT: 5432
 
 # ingress
