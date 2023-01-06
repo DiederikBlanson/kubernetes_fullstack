@@ -2,7 +2,7 @@ app: "backend-app"
 
 # service
 service:
-  type: LoadBalancer
+  type: NodePort
   protocol: TCP
   port: 4000
   nodePort: 32002 # optional for nodeport, service can be accessed by localhost:32001
@@ -17,7 +17,7 @@ container:
 env:
   FRONTEND_URL: http://kube-full.com
   POSTGRES_USER: postgresadmin
-  POSTGRES_HOST: postgres
+  POSTGRES_HOST: localhost
   POSTGRES_DB: postgresdb
   POSTGRES_PASSWORD: psltest
   POSTGRES_PORT: 5432

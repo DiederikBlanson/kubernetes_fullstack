@@ -37,7 +37,9 @@ services:
   db:
     container_name: db-container
     image: dedder98/kubernetes-db
-    build: ./db
+    build: 
+      context: ./db/app
+      dockerfile: Dockerfile
     hostname: postgres
     environment:
       POSTGRES_DB: postgresdb

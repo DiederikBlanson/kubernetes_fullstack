@@ -20,9 +20,9 @@ spec:
       - name: {{ .Values.app }}-container
         imagePullPolicy: Always
         image: {{ .Values.container.image }}
-        env:
-        - name: FRONTEND_URL
-          value: {{ .Values.env.FRONTEND_URL }}
+        envFrom: 
+          - configMapRef: 
+              name: {{ .Values.app }}-config
         ports:
         - containerPort: {{ .Values.container.port }}
         # nodeSelector:

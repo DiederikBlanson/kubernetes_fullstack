@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres  # Sets Deployment name
+  name: postgres-deploy  # Sets Deployment name
+  labels:
+    app: postgres
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: postgres
@@ -13,7 +15,7 @@ spec:
         app: postgres
     spec:
       containers:
-        - name: postgres
+        - name: postgress-container
           image: dedder98/kubernetes-db # postgres:10.1
           imagePullPolicy: Always
           ports:
@@ -22,7 +24,7 @@ spec:
             - configMapRef:
                 name: postgres-config
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
+            - mountPath: /var/lib/postgres/pgdata
               name: postgredb
       volumes:
         - name: postgredb
