@@ -11,7 +11,7 @@ on:
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-  DOCKER_BACKEND_IMAGE: kubernetes-db
+  DOCKER_DB_IMAGE: kubernetes-db
 
 jobs:
 
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Docker Image for NodeJS-App
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/$DOCKER_BACKEND_IMAGE:latest
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$DOCKER_DB_IMAGE:latest
     - name: Docker login
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Push image
