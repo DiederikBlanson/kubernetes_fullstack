@@ -32,7 +32,7 @@ declare global {
 Normally, you don't want to create an individual Helm chart as `system/helm-run.sh` should spin up the whole environment. However, it is still possible to do so by performing the following steps:
 1. Install a new chart 
 ```bash
-microk8s helm3 install [name-chart] ./helm-chart
+microk8s helm3 install [name-chart] ./helm-frontend
 ```
 2. Uninstall the chart
 ```bash

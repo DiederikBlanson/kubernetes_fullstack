@@ -1,5 +1,5 @@
 # Adding Multiple Nodes to a Kubernetes Cluster
-...
+TODO
 ### Prerequisites
 - The new node should have `microk8s` installed.
 
