@@ -13,7 +13,7 @@ const routes = Router()
 
 routes.get('/', async (_, res: Response) => {
 	return res.json({ 
-  		message: `Hai, from the server :D (fronturl: ${process.env.FRONTEND_URL})` 
+  		message: `Hey, from the server :D (fronturl: ${process.env.FRONTEND_URL})` 
 	})
 })
 

@@ -2,10 +2,10 @@ name: Docker Image CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
     paths: ['system/backend/app/**']
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
     paths: ['system/backend/app/**']
 
 env:
