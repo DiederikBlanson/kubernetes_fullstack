@@ -18,9 +18,16 @@ services:
     image: dedder98/kubernetes-nodejs
     depends_on:
       - db
-    build: ./backend/app
+    build: 
+      context: ./backend/app
+      dockerfile: Dockerfile.prod
     environment:
       - FRONTEND_URL=http://localhost:32001
+      - POSTGRES_USER=postgresadmin
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=kube-full-db
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_PORT=5432
     ports:
     - 32002:80
     networks:
