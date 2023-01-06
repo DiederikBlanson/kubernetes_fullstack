@@ -1,0 +1,14 @@
+app: "db-app"
+
+# service
+service:
+  type: NodePort
+  protocol: TCP
+  port: 5432
+  nodePort: 32003 # optional for nodeport, service can be accessed by localhost:32001
+
+# deployment
+replicaCount: 1
+container:
+  image: dedder98/kubernetes-db
+  port: 5432

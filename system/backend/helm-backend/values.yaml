@@ -8,7 +8,7 @@ service:
   nodePort: 32002 # optional for nodeport, service can be accessed by localhost:32001
 
 # deployment
-replicaCount: 4
+replicaCount: 1
 container:
   image: dedder98/kubernetes-nodejs
   port: 80
@@ -16,6 +16,11 @@ container:
 # env
 env:
   FRONTEND_URL: http://kube-full.com
+  POSTGRES_USER: postgresadmin
+  POSTGRES_HOST: postgres
+  POSTGRES_DB: kube-full-db
+  POSTGRES_PASSWORD: admin123
+  POSTGRES_PORT: 5432
 
 # ingress
 ingress:
