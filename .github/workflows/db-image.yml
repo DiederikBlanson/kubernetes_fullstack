@@ -27,4 +27,4 @@ jobs:
     - name: Docker login
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Push image
-      run: docker push $DOCKER_USER/$DOCKER_BACKEND_IMAGE:latest
+      run: docker push $DOCKER_USER/$DOCKER_DB_IMAGE:latest
