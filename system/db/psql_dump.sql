@@ -1,4 +1,3 @@
-
 GRANT ALL PRIVILEGES ON DATABASE postgres TO postgresadmin;
 CREATE TABLE Product (
   id INT NOT NULL UNIQUE,
