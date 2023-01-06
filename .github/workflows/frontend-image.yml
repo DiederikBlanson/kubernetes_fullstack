@@ -2,10 +2,10 @@ name: Frontend Image CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
     paths: ['system/frontend/app/**']
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
     paths: ['system/frontend/app/**']
 
 env:
