@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: {{ .Values.app }}-container
-          image: dedder98/kubernetes-db # postgres:10.1
-          imagePullPolicy: Always
+          image: {{ .Values.container.image }} # postgres:10.1
+          imagePullPolicy: {{ .Values.container.pullPolicy }}
           ports:
-            - containerPort: 5432  # Exposes container port
+            - containerPort: {{ .Values.container.port }}
           envFrom:
             - configMapRef:
                 name: {{ .Values.app }}-config

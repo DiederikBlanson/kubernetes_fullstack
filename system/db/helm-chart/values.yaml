@@ -2,28 +2,30 @@ app: "db-app"
 
 # service
 service:
-  type: NodePort
+  type: ClusterIP
   protocol: TCP
   port: 5432
-  nodePort: 32003 # optional for nodeport, service can be accessed by localhost:32001
+  clusterIP: 10.152.183.165
+  # nodePort: 32003 
 
 # deployment
 replicaCount: 1
 container:
   image: dedder98/kubernetes-db
   port: 5432
+  pullPolicy: Always
 
 # environment
 env:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: postgresadmin
   POSTGRES_PASSWORD: psltest
+  PGDATA: /var/lib/postgresql/data/pgdata
 
 # volumes
-volumemount:
-  name: postgredb
 volumes:
-  name: postgredb
+  accessModes: ReadWriteOnce
+
 storage:
-  classname: microk8s-hostpath
+  className: microk8s-hostpath
   size: 5Gi

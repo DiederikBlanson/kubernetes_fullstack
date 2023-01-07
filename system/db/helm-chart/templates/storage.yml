@@ -2,16 +2,15 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: {{ .Values.app }}-pv-volume  # Sets PV's name
+  name: {{ .Values.app }}-pv-volume 
   labels:
-    type: local  # Sets PV's type to local
     app: {{ .Values.app }}
 spec:
-  storageClassName: microk8s-hostpath 
+  storageClassName: {{ .Values.storage.className }}
   capacity:
-    storage: 5Gi # Sets PV Volume
+    storage: {{ .Values.storage.size }}
   accessModes:
-    - ReadWriteOnce
+    - {{ .Values.volumes.accessModes }}
   hostPath:
     path: "/mnt/data"
   persistentVolumeReclaimPolicy: Retain
@@ -19,13 +18,13 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ .Values.app }}-pv-claim  # Sets name of PVC
+  name: {{ .Values.app }}-pv-claim
   labels:
     app: {{ .Values.app }}
 spec:
-  storageClassName: microk8s-hostpath 
+  storageClassName: {{ .Values.storage.className }}
   accessModes:
-    - ReadWriteOnce  # Sets read and write access
+    - {{ .Values.volumes.accessModes }} 
   resources:
     requests:
-      storage: 5Gi  # Sets volume size
+      storage: {{ .Values.storage.size }}  # Sets volume size

@@ -5,7 +5,7 @@ service:
   type: NodePort
   protocol: TCP
   port: 4000
-  nodePort: 32002 # optional for nodeport, service can be accessed by localhost:32001
+  nodePort: 32002
 
 # deployment
 replicaCount: 1
@@ -17,10 +17,10 @@ container:
 env:
   FRONTEND_URL: http://kube-full.com
   POSTGRES_USER: postgresadmin
-  POSTGRES_HOST: 10.211.55.3
+  POSTGRES_HOST: 10.152.183.165 # 192.168.178.207 # 10.211.55.3
   POSTGRES_DB: postgresdb
   POSTGRES_PASSWORD: psltest
-  POSTGRES_PORT: 32003
+  POSTGRES_PORT: 5432
 
 # ingress
 ingress:

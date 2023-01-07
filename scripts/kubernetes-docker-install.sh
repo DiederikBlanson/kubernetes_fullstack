@@ -28,6 +28,7 @@ source ~/.bash_aliases
 # add microk8s modules
 microk8s enable dns storage
 microk8s enable registry
+microk8s enable ingress
 microk8s enable helm3
 microk8s enable dashboard
 microk8s start
