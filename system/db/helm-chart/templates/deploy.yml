@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-deploy  # Sets Deployment name
+  name: {{ .Values.app }}-deploy 
   labels:
-    app: postgres
+    app: {{ .Values.app }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: postgres
+      app: {{ .Values.app }}
   template:
     metadata:
       labels:
-        app: postgres
+        app: {{ .Values.app }}
     spec:
       containers:
-        - name: postgress-container
+        - name: {{ .Values.app }}-container
           image: dedder98/kubernetes-db # postgres:10.1
           imagePullPolicy: Always
           ports:
             - containerPort: 5432  # Exposes container port
           envFrom:
             - configMapRef:
-                name: postgres-config
+                name: {{ .Values.app }}-config
           volumeMounts:
             - mountPath: /var/lib/postgres/pgdata
-              name: postgredb
+              name: {{ .Values.app }}-volume
       volumes:
-        - name: postgredb
+        - name: {{ .Values.app }}-volume
           persistentVolumeClaim:
-            claimName: postgres-pv-claim
+            claimName: {{ .Values.app }}-pv-claim

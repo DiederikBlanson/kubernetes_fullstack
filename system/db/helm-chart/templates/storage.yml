@@ -2,10 +2,10 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: postgres-pv-volume  # Sets PV's name
+  name: {{ .Values.app }}-pv-volume  # Sets PV's name
   labels:
     type: local  # Sets PV's type to local
-    app: postgres
+    app: {{ .Values.app }}
 spec:
   storageClassName: microk8s-hostpath 
   capacity:
@@ -19,9 +19,9 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres-pv-claim  # Sets name of PVC
+  name: {{ .Values.app }}-pv-claim  # Sets name of PVC
   labels:
-    app: postgres
+    app: {{ .Values.app }}
 spec:
   storageClassName: microk8s-hostpath 
   accessModes:
