@@ -37,3 +37,4 @@ kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
 ----
 sources: 
 - https://ubuntu.com/tutorials/getting-started-with-kubernetes-ha#4-create-a-microk8s-multinode-cluster
+- https://github.com/canonical/microk8s/issues/2488
