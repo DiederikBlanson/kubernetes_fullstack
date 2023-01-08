@@ -5,7 +5,7 @@ service:
   type: ClusterIP
   protocol: TCP
   port: 5432
-  clusterIP: 10.152.183.165
+  clusterIP: 10.152.183.165 # TODO: this is a static ClusterIP. find a better way to do this
 
 # deployment
 replicaCount: 2
