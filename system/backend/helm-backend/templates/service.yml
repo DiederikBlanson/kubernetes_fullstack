@@ -8,6 +8,6 @@ spec:
   - protocol: {{ .Values.service.protocol }} 
     port: {{ .Values.service.port }} 
     targetPort: {{ .Values.container.port }}
-    # nodePort: {{ .Values.service.nodePort }}
+    nodePort: {{ .Values.service.nodePort }}
   selector:
     app: {{ .Values.app }}

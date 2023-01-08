@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app }}-deploy 
+  labels:
+    app: {{ .Values.app }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+    spec:
+      containers:
+        - name: {{ .Values.app }}-container
+          image: {{ .Values.container.image }} # postgres:10.1
+          imagePullPolicy: {{ .Values.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.container.port }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.app }}-config
+          volumeMounts:
+            - mountPath: /var/lib/postgres/pgdata
+              name: {{ .Values.app }}-volume
+      volumes:
+        - name: {{ .Values.app }}-volume
+          persistentVolumeClaim:
+            claimName: {{ .Values.app }}-pv-claim

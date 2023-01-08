@@ -1,0 +1,30 @@
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ .Values.app }}-pv-volume 
+  labels:
+    app: {{ .Values.app }}
+spec:
+  storageClassName: {{ .Values.storage.className }}
+  capacity:
+    storage: {{ .Values.storage.size }}
+  accessModes:
+    - {{ .Values.volumes.accessModes }}
+  hostPath:
+    path: "/mnt/data"
+  persistentVolumeReclaimPolicy: Retain
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.app }}-pv-claim
+  labels:
+    app: {{ .Values.app }}
+spec:
+  storageClassName: {{ .Values.storage.className }}
+  accessModes:
+    - {{ .Values.volumes.accessModes }} 
+  resources:
+    requests:
+      storage: {{ .Values.storage.size }}  # Sets volume size

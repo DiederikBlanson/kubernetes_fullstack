@@ -2,13 +2,13 @@ app: "backend-app"
 
 # service
 service:
-  type: LoadBalancer
+  type: NodePort
   protocol: TCP
   port: 4000
-  nodePort: 32002 # optional for nodeport, service can be accessed by localhost:32001
+  nodePort: 32002
 
 # deployment
-replicaCount: 4
+replicaCount: 3
 container:
   image: dedder98/kubernetes-nodejs
   port: 80
@@ -16,6 +16,11 @@ container:
 # env
 env:
   FRONTEND_URL: http://kube-full.com
+  POSTGRES_USER: postgresadmin
+  POSTGRES_HOST: 10.152.183.165 # TODO: this is a static ClusterIP. find a better way to do this
+  POSTGRES_DB: postgresdb
+  POSTGRES_PASSWORD: psltest
+  POSTGRES_PORT: 5432
 
 # ingress
 ingress:

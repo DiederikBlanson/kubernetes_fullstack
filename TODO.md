@@ -1,6 +1,7 @@
 To be implemented:
 - Documentation Kubernetes setup
-- Add database kubernetes setup
 - Documentation DB
+- Postgresdb in a Secret instead of Config
+- Set terminationGracePeriodSeconds to handle the case when a node goes down
+- Refer to db service as 'postgres-svc' instead of the clusterIP
 - Add external domain name and refer to cluster
-- Add LoadBalancer

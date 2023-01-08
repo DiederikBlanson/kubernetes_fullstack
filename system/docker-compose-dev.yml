@@ -33,8 +33,8 @@ services:
       - FRONTEND_URL=http://localhost:32001
       - POSTGRES_USER=postgresadmin
       - POSTGRES_HOST=postgres
-      - POSTGRES_DB=kube-full-db
-      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=postgresdb
+      - POSTGRES_PASSWORD=psltest
       - POSTGRES_PORT=5432
     ports:
     - 32002:80
@@ -44,12 +44,14 @@ services:
   db:
     container_name: db-container
     image: dedder98/kubernetes-db-dev
-    build: ./db
+    build: 
+      context: ./db/app
+      dockerfile: Dockerfile
     hostname: postgres
     environment:
-      POSTGRES_DB: kube-full-db
+      POSTGRES_DB: postgresdb
       POSTGRES_USER: postgresadmin
-      POSTGRES_PASSWORD: admin123
+      POSTGRES_PASSWORD: psltest
     ports:
     - 32003:5432
     restart: always
