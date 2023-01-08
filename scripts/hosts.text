@@ -1,6 +1,9 @@
-# kubernetes workers
+# file '/etc/hosts'
+
+# add all nodes such that communication is possible
 [HP-ip] hp
 [DELL-ip] dell
+[OTHER-ip] ...
 
 # kubernetes
 127.0.0.1 api.kube-full.com

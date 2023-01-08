@@ -29,7 +29,8 @@ source ~/.bash_aliases
 microk8s enable dns storage registry ingress helm3 dashboard
 microk8s start
 
-# add hosts, check hosts.sh
+# Add hosts. This includes for communication between nodes and DNS resolving.
+# Check hosts.txt
 
 # now the required modules are installed, the following are nice-to-have
 sudo snap install curl
