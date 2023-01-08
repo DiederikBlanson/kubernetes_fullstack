@@ -17,7 +17,7 @@ container:
 env:
   FRONTEND_URL: http://kube-full.com
   POSTGRES_USER: postgresadmin
-  POSTGRES_HOST: 10.152.183.165 # 192.168.178.207 # 10.211.55.3
+  POSTGRES_HOST: 10.152.183.165 # TODO: this is a static ClusterIP. find a better way to do this
   POSTGRES_DB: postgresdb
   POSTGRES_PASSWORD: psltest
   POSTGRES_PORT: 5432

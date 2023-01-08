@@ -5,6 +5,3 @@ To be implemented:
 - Set terminationGracePeriodSeconds to handle the case when a node goes down
 - Refer to db service as 'postgres-svc' instead of the clusterIP
 - Add external domain name and refer to cluster
-
-
-https://github.com/canonical/microk8s/issues/2488
