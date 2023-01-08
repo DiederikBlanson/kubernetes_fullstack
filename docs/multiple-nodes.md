@@ -31,7 +31,23 @@ sudo echo "[node-ip] [node-name"] << /etc/hosts
 ## Other Commands
 - To view the pods on a specific node, run the following command, replacing <node> with the node's hostname: 
 ```bash
-kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node_name>
+```
+
+<br/>
+
+## Deschedule Node
+In order to make a node unschedulable, execute the following command:
+```bash
+microk8s cordon <node_name>
+```
+If you want to make it unschedulable and remove all resources attached to the node, execute the following command. It does not remove the node from the cluster, but makes it unschedulable.
+```bash
+microk8s drain <node_name> --ignore-daemonsets
+```
+To make it schedulable again:
+```bash
+microk8s uncordon <node_name>
 ```
 
 ----
