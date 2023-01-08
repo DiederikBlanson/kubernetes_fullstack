@@ -12,7 +12,7 @@ This repository aims to demonstrate how to deploy a full-stack application, incl
 The fullstack application uses the following technologies:
 1. Front-end: A React application written in TypeScript, using the default template of create-react-app which displays a single page. This allows the connection with the server to be tested, and verifies that the server returns a response.
 2. Back-end: A NodeJS application written in TypeScript, using Express. This API consists of a single endpoint which returns a dummy response to the frontend.
-3. Database: A PostgreSQL database with a single table. Although there is a Docker container for the database, it is not yet connected to the backend (TODO).
+3. Database: A PostgreSQL database with a single table.
 
 <br/>
 
@@ -27,7 +27,7 @@ To set up the system on Ubuntu 20.04 LTS, follow these steps:
 1. Install Ubuntu on your local virtual machine or production servers.
 2. (Optional) Enable SSH to allow for easy access to the server. Refer to the file scripts/enable-ssh.sh for instructions.
 3. Install Kubernetes and Docker by following the steps outlined in the file scripts/kubernetes-docker-install.sh.
-4. Create credentials to connect to DockerHub. (TODO)
+4. Create credentials to connect to DockerHub. 
 
 ### Create a DockerHub-account
 In order to push the container images to the cloud repository on DockerHub, you will need to create a DockerHub account (https://hub.docker.com/signup). After creating your account, be sure to update the values in the ```docker-compose``` and ```values.yaml``` files to reflect your DockerHub username. Currently, the values are set to "dedder98," which is the username for my personal DockerHub account.

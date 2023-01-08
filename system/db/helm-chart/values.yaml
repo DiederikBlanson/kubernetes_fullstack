@@ -9,7 +9,7 @@ service:
   # nodePort: 32003 
 
 # deployment
-replicaCount: 1
+replicaCount: 2
 container:
   image: dedder98/kubernetes-db
   port: 5432

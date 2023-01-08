@@ -1,10 +1,8 @@
 # Kubernetes Setup
 
+(TODO)
 
 ## Add private registry to kubernetes
-sources:
-- https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-
 In order to give kubernetes access to a private Docker registry, we have to generate a secret.
 1. Generate a secret on the command line: ```kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>```
 2. Generate a ```secret.yml``` file in the helm folder and put the contents of ```kubectl get secret regcred --output=yaml``` in there.
@@ -17,7 +15,8 @@ container:
   image: <your-private-image>
 ...
 ```
-
-https://github.com/mhart/alpine-node/issues/28
-
-https://luppeng.wordpress.com/2020/02/28/install-and-start-postgresql-on-alpine-linux/
+---
+sources:
+- https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+- https://github.com/mhart/alpine-node/issues/28
+- https://luppeng.wordpress.com/2020/02/28/install-and-start-postgresql-on-alpine-linux/

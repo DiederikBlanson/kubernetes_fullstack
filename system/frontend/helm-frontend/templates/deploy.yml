@@ -20,7 +20,7 @@ spec:
       - name: {{ .Values.app }}-container
         imagePullPolicy: Always
         image: {{ .Values.container.image }}
-        # nodeSelector:
+        # nodeSelector: TODO: implement in documentation
         #   kubernetes.io/hostname: dell
         volumeMounts:
           - name: config

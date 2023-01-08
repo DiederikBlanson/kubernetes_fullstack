@@ -26,12 +26,11 @@ echo "alias helm3='microk8s helm3'" >> ~/.bash_aliases
 source ~/.bash_aliases
 
 # add microk8s modules
-microk8s enable dns storage
-microk8s enable registry
-microk8s enable ingress
-microk8s enable helm3
-microk8s enable dashboard
+microk8s enable dns storage registry ingress helm3 dashboard
 microk8s start
+
+# add hosts, check hosts.sh
 
 # now the required modules are installed, the following are nice-to-have
 sudo snap install curl
+
