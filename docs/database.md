@@ -1,11 +1,6 @@
 # Database
 
-(TODO)
-
-### Show all tables in a PostgresDB
-```bash
-select * from pg_catalog.pg_tables where schemaname='public';
-```
+The database used here is a straightforward Postgres database that comprises of a single table. The `system/db` directory contains both a Dockerfile and a Postgres dump file. The dump file is used to insert data into the container when the image is built using the Dockerfile.
 
 --- 
 sources:
