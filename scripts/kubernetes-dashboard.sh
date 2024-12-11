@@ -8,8 +8,7 @@ SERVER_IP="<local-ip-server>"
 
 # Establish SSH tunnel
 echo "Establishing SSH tunnel to forward port 8443..."
-ssh -L localhost:8443:127.0.0.1:8443 "$USER@$SERVER_IP" &
-SSH_PID=$!
+ssh -L localhost:8443:127.0.0.1:8443 "$USER@$SERVER_IP"
 
 # Add Kubernetes Dashboard Helm chart repository
 echo "Adding Kubernetes Dashboard Helm chart repository..."
@@ -30,8 +29,7 @@ echo "$TOKEN"
 
 # Port forward the Kubernetes Dashboard service
 echo "Forwarding Kubernetes Dashboard service to port 8443..."
-kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443 &
-PORT_FORWARD_PID=$!
+kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
 
 # Clean up on exit
 cleanup() {
