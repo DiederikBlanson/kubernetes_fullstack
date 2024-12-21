@@ -23,6 +23,7 @@ microk8s status --wait-ready
 touch ~/.bash_aliases
 echo "alias kubectl='microk8s kubectl'" >> ~/.bash_aliases
 echo "alias helm3='microk8s helm3'" >> ~/.bash_aliases
+echo "alias k='microk8s kubectl'" >> ~/.bash_aliases
 source ~/.bash_aliases
 
 # add microk8s modules
