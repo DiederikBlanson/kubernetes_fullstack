@@ -11,14 +11,8 @@ sudo chown -f -R $USER ~/.kube
 su - $USER
 ```
 
-Additionally, turn off swap on the worker [3]
-```bash
-sudo swapoff -a
-sudo sed -i '/ swap / s/^/#/' /etc/fstab
-```
-
 ### Step 2: Add New Node to /etc/hosts
-First, you must add the new node's IP address and hostname to the /etc/hosts file on all nodes in the cluster. To do this, run the following command on each node, replacing node-ip and node-name with the appropriate values:
+First, you must add the new node's IP address (can be changed [4]) and hostname to the /etc/hosts file on all nodes in the cluster. To do this, run the following command on each node, replacing node-ip and node-name with the appropriate values:
 ```bash
 sudo echo "[worker-ip] [worker-name"] << /etc/hosts
 ```
@@ -76,6 +70,7 @@ kubectl uncordon <node_name>
 
 ----
 sources: 
-- [1] https://ubuntu.com/tutorials/getting-started-with-kubernetes-ha#4-create-a-microk8s-multinode-cluster
+- [1] 
 - [2] https://github.com/canonical/microk8s/issues/2488
 - [3] https://www.linuxtechi.com/install-kubernetes-on-ubuntu-22-04/
+- [4] https://linuxconfig.org/change-ip-address-on-ubuntu-serverß
